@@ -20,7 +20,7 @@ typedef struct {
     uint8_t h;
     uint8_t l;
     GBFlags flags;
-    uint8_t* memory;
+    uint8_t memory[0x7FFF]; // This is not a pointer for segfault reasons
     uint16_t af;
     uint16_t bc;
     uint16_t de;
