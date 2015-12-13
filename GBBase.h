@@ -1,7 +1,7 @@
-#include <stdint.h>
-
 #ifndef GBBASE_H
 #define GBBASE_H
+
+#include <stdint.h>
 
 typedef struct {
     uint8_t z;
