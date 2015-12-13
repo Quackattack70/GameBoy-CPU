@@ -4,6 +4,15 @@
 #include <stdint.h>
 
 typedef struct {
+    uint8_t pixels[64];
+} GBTile;
+
+typedef struct {
+    uint8_t pixels[128];
+    uint16_t pos[2];
+} GBSprite;
+
+typedef struct {
     uint8_t z;
     uint8_t c;
     uint8_t h;
@@ -21,6 +30,9 @@ typedef struct {
     uint8_t l;
     GBFlags flags;
     uint8_t memory[0x7FFF]; // This is not a pointer for segfault reasons
+    GBTile tiles[512]; /* about 360 are shown on the screen, the rest is 
+    not drawn */
+    GBSprite sprites[40];
     uint16_t af;
     uint16_t bc;
     uint16_t de;
