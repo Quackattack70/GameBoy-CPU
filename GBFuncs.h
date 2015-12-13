@@ -86,10 +86,11 @@ void EmulateInstruct(GBState* state){
             break;
         
         // back to 8 bit loads :( :P
-        case 0x41: state->b = state->c; break; // LD B,C
+        case 0x41: // LD B,C
+            state->b = state->c;
+            state->pc++;
+            break;
     }
-    
-    state->pc++;
     
     combineRegs(state);
     setFlagsInF(state);
