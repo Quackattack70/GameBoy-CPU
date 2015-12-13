@@ -1,7 +1,7 @@
-#include "GBBase.h"
-
 #ifndef GBFUNCS_H
 #define GBFUNCS_H
+
+#include "GBBase.h"
 
 void combineRegs(GBState* state){
     state->bc = (state->b << 8) | state->c;
