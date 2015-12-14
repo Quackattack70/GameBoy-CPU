@@ -1,4 +1,3 @@
-
 #include "GBFuncs.h"
 
 void combineRegs(GBState* state){
@@ -86,10 +85,10 @@ void EmulateInstruct(GBState* state){
         // back to 8 bit loads :( :P
         case 0x41: // LD B,C
             state->b = state->c;
-            state->currentb++;
             break;
     }
     
+    state->currentb++;
     state->pc++;
     
     combineRegs(state);
