@@ -8,8 +8,9 @@ typedef struct {
 } GBTile;
 
 typedef struct {
-    uint8_t pixels[128];
-    uint16_t pos[2];
+    GBTile spaces[2];
+    uint8_t isLarge;
+    uint16_t loc;
 } GBSprite;
 
 typedef struct {

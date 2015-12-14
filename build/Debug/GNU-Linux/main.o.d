@@ -1,4 +1,6 @@
-build/Debug/GNU-Linux/main.o: main.cpp GBFuncs.h GBBase.h
+build/Debug/GNU-Linux/main.o: main.cpp GBFuncs.c GBFuncs.h GBBase.h
+
+GBFuncs.c:
 
 GBFuncs.h:
 
