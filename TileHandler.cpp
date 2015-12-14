@@ -1,5 +1,7 @@
 #include "TileHandler.h"
 
+TileHandler::TileHandler() {};
+
 void TileHandler::initTiles(GBState* state){
     int loc = 0;
     for(int i = 0; i < 20; i++){
@@ -14,4 +16,3 @@ void TileHandler::initTiles(GBState* state){
     }
 }
 
-TileHandler::TileHandler() {};
