@@ -34,6 +34,7 @@ typedef struct {
     GBTile tiles[512]; /* about 360 are shown on the screen, the rest is 
     not drawn */
     GBSprite sprites[40];
+    uint16_t currentb;
     uint16_t af;
     uint16_t bc;
     uint16_t de;

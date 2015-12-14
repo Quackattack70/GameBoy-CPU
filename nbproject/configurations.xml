@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>GBBase.h</itemPath>
       <itemPath>GBFuncs.h</itemPath>
+      <itemPath>TileHandler.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,7 +15,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>GBFuncs.c</itemPath>
+      <itemPath>GBFuncs.cpp</itemPath>
+      <itemPath>TileHandler.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -41,9 +43,13 @@
       </compileType>
       <item path="GBBase.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="GBFuncs.c" ex="false" tool="0" flavor2="0">
+      <item path="GBFuncs.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="GBFuncs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TileHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TileHandler.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -70,9 +76,13 @@
       </compileType>
       <item path="GBBase.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="GBFuncs.c" ex="false" tool="0" flavor2="0">
+      <item path="GBFuncs.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="GBFuncs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TileHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TileHandler.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
