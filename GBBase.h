@@ -16,10 +16,12 @@ typedef struct {
     uint8_t b;
 } GBNewColor;
 
-typedef struct{
+struct GBColor{
     GBNewColor newC;
+    uint16_t colorint;
+    void defineColorInt();
     GBOldColor oldC;
-} GBColor;
+};
 
 typedef struct {
     GBColor pixels[64];
