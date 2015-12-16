@@ -26,7 +26,7 @@ typedef struct {
 } GBTile;
 
 typedef struct {
-    GBColor spaces[128];
+    GBColor pixels[128];
     bool isLarge;
     uint16_t loc;
 } GBSprite;
