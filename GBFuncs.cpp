@@ -86,6 +86,18 @@ void EmulateInstruct(GBState* state){
         case 0x41: // LD B,C
             state->b = state->c;
             break;
+            
+        case 0x42: // LD B,D
+            state->b = state->d;
+            break;
+            
+        case 0x43: // LD B,E
+            state->b = state->e;
+            break;
+            
+        case 0x44: // LD B,H
+            state->b = state->h;
+            break;
     }
     
     state->pc++;
