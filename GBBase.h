@@ -3,6 +3,19 @@
 
 #include <stdint.h>
 
+typedef enum {
+    GB_WHITE = 0,
+    GB_LIGHTGRAY = 1,
+    GB_DARKGRAY = 2,
+    GB_BLACK = 3
+} GBOldColor;
+
+typedef struct {
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+} GBNewColor;
+
 typedef struct {
     uint8_t pixels[64];
 } GBTile;
