@@ -16,12 +16,17 @@ typedef struct {
     uint8_t b;
 } GBNewColor;
 
+typedef struct{
+    GBNewColor newC;
+    GBOldColor oldC;
+} GBColor;
+
 typedef struct {
-    uint8_t pixels[64];
+    GBColor pixels[64];
 } GBTile;
 
 typedef struct {
-    uint8_t spaces[128];
+    GBColor spaces[128];
     bool isLarge;
     uint16_t loc;
 } GBSprite;
