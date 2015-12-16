@@ -16,7 +16,7 @@ typedef struct {
     uint8_t b;
 } GBNewColor;
 
-struct GBColor{
+struct GBColor {
     GBNewColor newC;
     uint16_t colorint;
     void defineColorInt();
