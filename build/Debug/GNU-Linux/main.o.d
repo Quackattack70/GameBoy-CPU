@@ -1,7 +1,10 @@
-build/Debug/GNU-Linux/main.o: main.cpp GBBase.h GBFuncs.h TileHandler.h
+build/Debug/GNU-Linux/main.o: main.cpp GameRender.h GBFuncs.h GBBase.h \
+ TileHandler.h
 
-GBBase.h:
+GameRender.h:
 
 GBFuncs.h:
+
+GBBase.h:
 
 TileHandler.h:

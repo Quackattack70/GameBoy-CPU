@@ -43,7 +43,7 @@
       </toolsSet>
       <compileType>
         <linkerTool>
-          <commandLine>-lglfw3 -lGL</commandLine>
+          <commandLine>-L/usr/local/lib -lglfw3 -pthread -lGLEW -lGLU -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11 -lXcursor</commandLine>
         </linkerTool>
       </compileType>
       <item path="GBBase.h" ex="false" tool="3" flavor2="0">

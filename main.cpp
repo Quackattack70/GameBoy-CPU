@@ -1,9 +1,10 @@
 #include <stdio.h>
-#include "GBBase.h"
-#include "GBFuncs.h"
-#include "TileHandler.h"
+#include "GameRender.h"
 
 int main(int argc, char** argv) {
-    
+    GameRender* render = new GameRender();
+    render->init();
+    render->loop();
+    return 0;
 }
 
