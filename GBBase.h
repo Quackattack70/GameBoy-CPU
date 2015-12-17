@@ -18,8 +18,6 @@ typedef struct {
 
 struct GBColor {
     GBNewColor newC;
-    uint16_t colorint;
-    void defineColorInt();
     GBOldColor oldC;
 };
 
