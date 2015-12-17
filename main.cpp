@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "GameRender.h"
 
 int main(int argc, char** argv) {
