@@ -35,8 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/GBBase.o \
 	${OBJECTDIR}/GBFuncs.o \
+	${OBJECTDIR}/GameRender.o \
 	${OBJECTDIR}/TileHandler.o \
 	${OBJECTDIR}/main.o
 
@@ -65,15 +65,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gameboy-cpu: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gameboy-cpu ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/GBBase.o: GBBase.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GBBase.o GBBase.cpp
-
 ${OBJECTDIR}/GBFuncs.o: GBFuncs.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GBFuncs.o GBFuncs.cpp
+
+${OBJECTDIR}/GameRender.o: GameRender.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GameRender.o GameRender.cpp
 
 ${OBJECTDIR}/TileHandler.o: TileHandler.cpp 
 	${MKDIR} -p ${OBJECTDIR}

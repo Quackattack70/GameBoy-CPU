@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>GBBase.h</itemPath>
       <itemPath>GBFuncs.h</itemPath>
+      <itemPath>GameRender.h</itemPath>
       <itemPath>TileHandler.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -15,8 +16,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>GBBase.cpp</itemPath>
       <itemPath>GBFuncs.cpp</itemPath>
+      <itemPath>GameRender.cpp</itemPath>
       <itemPath>TileHandler.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -41,14 +42,19 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <linkerTool>
+          <commandLine>-lglfw3 -lGL</commandLine>
+        </linkerTool>
       </compileType>
-      <item path="GBBase.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="GBBase.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="GBFuncs.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="GBFuncs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GameRender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GameRender.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="TileHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -77,13 +83,15 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="GBBase.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="GBBase.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="GBFuncs.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="GBFuncs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GameRender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GameRender.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="TileHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
