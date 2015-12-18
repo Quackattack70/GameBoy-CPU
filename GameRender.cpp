@@ -2,7 +2,7 @@
 
 GameRender::GameRender(){
     if (!glfwInit()){
-        printf("Error occured");
+        fprintf(stderr, "Error occured");
         exit(-1);
     }
     
