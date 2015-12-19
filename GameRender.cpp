@@ -6,7 +6,7 @@ GameRender::GameRender(){
         exit(-1);
     }
     
-    this->wind = glfwCreateWindow(640, 400, "GB", NULL, NULL);
+    this->wind = glfwCreateWindow(320, 288, "GB", NULL, NULL);
     
     if(this->wind == NULL){
         fprintf(stderr, "Error occured");
@@ -23,7 +23,7 @@ void GameRender::init(){
     
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(0, 640, 400, 0, 1, -1);
+    glOrtho(0, 320, 288, 0, 1, -1);
     glMatrixMode(GL_MODELVIEW);
 }
 
