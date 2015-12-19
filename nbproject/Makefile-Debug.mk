@@ -63,7 +63,7 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gameboy-cpu: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gameboy-cpu ${OBJECTFILES} ${LDLIBSOPTIONS} -L/usr/local/lib -lglfw3 -pthread -lGLEW -lGLU -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11 -lXcursor
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gameboy-cpu ${OBJECTFILES} ${LDLIBSOPTIONS} -L/usr/local/lib -lglfw3 -lpthread -lGLEW -lGLU -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11 -lXcursor -ldl
 
 ${OBJECTDIR}/GBFuncs.o: GBFuncs.cpp 
 	${MKDIR} -p ${OBJECTDIR}

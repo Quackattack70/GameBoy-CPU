@@ -2,6 +2,7 @@
 #define GBFUNCS_H
 
 #include "GBBase.h"
+#include <stdio.h>
 
 void combineRegs(GBState*);
 void setFlagsInF(GBState*);

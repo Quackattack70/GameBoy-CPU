@@ -51,6 +51,7 @@ void GameRender::loop(){
     
     while(glfwWindowShouldClose(this->wind) == 0){
         this->update();
+        EmulateInstruct(&this->state);
         
         glfwSwapBuffers(this->wind);
         glfwPollEvents();

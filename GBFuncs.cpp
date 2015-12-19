@@ -83,21 +83,64 @@ void EmulateInstruct(GBState* state){
             break;
         
         // back to 8 bit loads :( :P
-        case 0x41: // LD B,C
-            state->b = state->c;
-            break;
-            
-        case 0x42: // LD B,D
-            state->b = state->d;
-            break;
-            
-        case 0x43: // LD B,E
-            state->b = state->e;
-            break;
-            
-        case 0x44: // LD B,H
-            state->b = state->h;
-            break;
+        case 0x41: state->b = state->c; break; // LD B,C
+        case 0x42: state->b = state->d; break; // LD B,D
+        case 0x43: state->b = state->e; break; // LD B,E 
+        case 0x44: state->b = state->h; break; // LD B,H
+        case 0x45: state->b = state->l; break; // LD B,L
+        case 0x46: state->b = state->memory[state->hl]; break; // LD B,(HL)
+        case 0x47: state->b = state->a; break; // LD B,A
+        case 0x48: state->c = state->b; break; // LD C,B
+        case 0x4a: state->c = state->d; break; // LD C,D
+        case 0x4b: state->c = state->e; break; // LD C,E
+        case 0x4c: state->c = state->h; break; // LD C,H
+        case 0x4d: state->c = state->l; break; // LD C,L
+        case 0x4e: state->c = state->memory[state->hl]; break; // LD C,(HL)
+        case 0x4f: state->c = state->a; break; // LD C,A
+        case 0x50: state->d = state->b; break; // LD D,B
+        case 0x51: state->d = state->c; break; // LD D,C
+        case 0x53: state->d = state->e; break; // LD D,E
+        case 0x54: state->d = state->h; break; // LD D,H
+        case 0x55: state->d = state->l; break; // LD D,L
+        case 0x56: state->d = state->memory[state->hl]; break; // LD D,(HL)
+        case 0x57: state->d = state->a; break; // LD D,A
+        case 0x58: state->e = state->b; break; // LD E,B
+        case 0x59: state->e = state->c; break; // LD E,C
+        case 0x5a: state->e = state->d; break; // LD E,D
+        case 0x5c: state->e = state->h; break; // LD E,H
+        case 0x5d: state->e = state->l; break; // LD E,L
+        case 0x5e: state->e = state->memory[state->hl]; break; // LD E,(HL)
+        case 0x5f: state->e = state->a; break; // LD E,A
+        case 0x60: state->h = state->b; break; // LD H,B
+        case 0x61: state->h = state->c; break; // LD H,C
+        case 0x62: state->h = state->d; break; // LD H,D
+        case 0x63: state->h = state->e; break; // LD H,E
+        case 0x65: state->h = state->l; break; // LD H,L
+        case 0x66: state->h = state->memory[state->hl]; break; // LD H,(HL)
+        case 0x67: state->h = state->a; break; // LD H,A
+        case 0x68: state->l = state->b; break; // LD L,B
+        case 0x69: state->l = state->c; break; // LD L,C
+        case 0x6a: state->l = state->d; break; // LD L,D
+        case 0x6b: state->l = state->e; break; // LD L,E
+        case 0x6c: state->l = state->h; break; // LD L,H
+        case 0x6e: state->l = state->memory[state->hl]; break; // LD L,(HL)
+        case 0x6f: state->l = state->a; break; // LD L,A
+        case 0x70: state->memory[state->hl] = state->b; break; // LD (HL),B
+        case 0x71: state->memory[state->hl] = state->c; break; // LD (HL),C
+        case 0x72: state->memory[state->hl] = state->d; break; // LD (HL),D
+        case 0x73: state->memory[state->hl] = state->e; break; // LD (HL),E
+        case 0x74: state->memory[state->hl] = state->h; break; // LD (HL),H
+        case 0x75: state->memory[state->hl] = state->l; break; // LD (HL),L
+        case 0x77: state->memory[state->hl] = state->a; break; // LD (HL),A
+        case 0x78: state->a = state->b; break; // LD A,B
+        case 0x79: state->a = state->c; break; // LD A,C
+        case 0x7a: state->a = state->d; break; // LD A,D
+        case 0x7b: state->a = state->e; break; // LD A,E
+        case 0x7c: state->a = state->h; break; // LD A,H
+        case 0x7d: state->a = state->l; break; // LD A,L
+        case 0x7e: state->a = state->memory[state->hl]; break; // LD A,(HL)
+        
+        default: fprintf(stderr, "Unimplemented Instruction"); break;
     }
     
     state->pc++;
