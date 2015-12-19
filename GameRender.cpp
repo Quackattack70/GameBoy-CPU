@@ -34,14 +34,22 @@ void GameRender::cancel(){
 
 void GameRender::start(){
     glBegin(GL_POLYGON);
+#if mainGraphics == GBC_GRAPHICS
     
+#elif mainGraphics == GB_GRAPHICS
+    
+#endif
     glEnd();
 }
 
 void GameRender::update(){
     glClear(GL_COLOR_BUFFER_BIT);
     glBegin(GL_POLYGON);
+#if mainGraphics == GBC_GRAPHICS
     
+#elif mainGraphics == GB_GRAPHICS
+    
+#endif
     glEnd();
 }
 
