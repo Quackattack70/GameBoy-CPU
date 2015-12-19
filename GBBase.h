@@ -5,9 +5,9 @@
 
 typedef enum {
     GB_GRAPHICS, GBC_GRAPHICS
-} InitGraphics;
+} GraphicsType;
 
-static InitGraphics mainGraphics;
+static GraphicsType mainGraphics;
 
 typedef enum {
     GB_WHITE = 0,
