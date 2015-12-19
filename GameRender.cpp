@@ -46,8 +46,10 @@ void GameRender::update(){
 }
 
 void GameRender::loop(){
+    printf("Creating Window...\n");
     this->init();
     this->start();
+    printf("Starting GB...\n");
     
     while(glfwWindowShouldClose(this->wind) == 0){
         this->update();
@@ -57,5 +59,6 @@ void GameRender::loop(){
         glfwPollEvents();
     }
     
+    printf("Closing GB...\n");
     this->cancel();
 }
