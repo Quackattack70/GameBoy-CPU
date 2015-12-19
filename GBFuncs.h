@@ -4,6 +4,7 @@
 #include "GBBase.h"
 #include <stdio.h>
 
+void setColorCompatible(GBState*);
 void combineRegs(GBState*);
 void setFlagsInF(GBState*);
 

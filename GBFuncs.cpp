@@ -1,5 +1,14 @@
 #include "GBFuncs.h"
 
+void setColorCompatible(GBState* state){
+    if (state->memory[0x143] == 0x80){
+        mainGraphics = GBC_GRAPHICS;
+    } 
+    else if (state->memory[0x143] == 0x00){
+        mainGraphics = GB_GRAPHICS;
+    }
+}
+
 void combineRegs(GBState* state){
     state->bc = (state->b << 8) | state->c;
     state->af = (state->a << 8) | state->f;

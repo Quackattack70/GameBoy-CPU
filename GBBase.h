@@ -27,7 +27,7 @@ struct GBColor {
     GBNewColor color;
 #elif mainGraphics == GB_GRAPHICS
     GBOldColor color;
-#endif    
+#endif
 };
 
 typedef struct {

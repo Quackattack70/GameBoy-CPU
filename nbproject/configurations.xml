@@ -42,6 +42,9 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
         <linkerTool>
           <commandLine>-L/usr/local/lib -lglfw3 -lpthread -lGLEW -lGLU -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11 -lXcursor -ldl</commandLine>
         </linkerTool>

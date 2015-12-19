@@ -33,6 +33,7 @@ void GameRender::cancel(){
 }
 
 void GameRender::start(){
+    setColorCompatible(&this->state);
     glBegin(GL_POLYGON);
 #if mainGraphics == GBC_GRAPHICS
     
