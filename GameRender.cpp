@@ -60,6 +60,8 @@ void GameRender::loop(){
     this->start();
     printf("Starting GB...\n");
     
+    state.pc = 150;
+    
     while(glfwWindowShouldClose(this->wind) == 0){
         this->update();
         EmulateInstruct(&this->state);
