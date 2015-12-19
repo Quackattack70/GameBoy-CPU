@@ -24,9 +24,9 @@ typedef struct {
 
 struct GBColor {
 #if mainGraphics == GBC_GRAPHICS
-    GBNewColor newC;
+    GBNewColor color;
 #elif mainGraphics == GB_GRAPHICS
-    GBOldColor oldC;
+    GBOldColor color;
 #endif    
 };
 
