@@ -29,6 +29,12 @@ void GameRender::init(){
     glMatrixMode(GL_MODELVIEW);
 }
 
+void GameRender::IOHandle(){
+    if (GB_A == GLFW_PRESS){
+        
+    }
+}
+
 void GameRender::cancel(){
     glfwDestroyWindow(this->wind);
     exit(0);
@@ -67,6 +73,7 @@ void GameRender::loop(){
     while(glfwWindowShouldClose(this->wind) == 0){
         this->update();
         EmulateInstruct(&this->state);
+        this->IOHandle();
         
         glfwSwapBuffers(this->wind);
         glfwPollEvents();
