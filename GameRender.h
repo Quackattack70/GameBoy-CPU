@@ -16,6 +16,7 @@ public:
     GBState state;
     GameRender();
     void init();
+    void IOHandle();
     void start();
     void update();
     void loop();
@@ -24,3 +25,5 @@ public:
 
 #endif
 
+#define GB_A glfwGetKey(this->wind, GLFW_KEY_Z)
+#define GB_B glfwGetKey(this->wind, GLFW_KEY_X)
