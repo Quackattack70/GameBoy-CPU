@@ -5,6 +5,8 @@ GameRender::GameRender(){
         fprintf(stderr, "Error occured");
         exit(-1);
     }
+    glfwDefaultWindowHints();
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     
     this->wind = glfwCreateWindow(320, 288, "GB", NULL, NULL);
     
@@ -18,7 +20,7 @@ GameRender::GameRender(){
 }
 
 void GameRender::init(){
-    glfwDefaultWindowHints();
+    
     glfwMakeContextCurrent(this->wind);
     
     glMatrixMode(GL_PROJECTION);
