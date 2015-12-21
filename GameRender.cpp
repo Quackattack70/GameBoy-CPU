@@ -33,6 +33,9 @@ void GameRender::IOHandle(){
     if (GB_A == GLFW_PRESS){
         
     }
+    if (GB_B == GLFW_PRESS){
+        
+    }
 }
 
 void GameRender::cancel(){
