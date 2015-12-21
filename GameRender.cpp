@@ -17,6 +17,7 @@ GameRender::GameRender(){
     }
     
     this->tileh = new TileHandler();
+    this->tileh->initTiles(&this->state);
 }
 
 void GameRender::init(){
