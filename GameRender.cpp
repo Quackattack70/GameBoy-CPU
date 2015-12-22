@@ -109,6 +109,7 @@ void GameRender::loop(){
         this->update();
         EmulateInstruct(&this->state);
         this->IOHandle();
+        this->state.memory[0xff00] = 0;
         
         glfwSwapBuffers(this->wind);
         glfwPollEvents();
