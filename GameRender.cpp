@@ -46,8 +46,23 @@ void GameRender::cancel(){
 
 void GameRender::start(){
     setColorCompatible(&this->state);
-    glBegin(GL_POLYGON);
+    glBegin(GL_POINT);
+    
 #if mainGraphics == GBC_GRAPHICS
+    for (int i =0; i < 360; i++){
+        int pix = 0;
+        for (int x= 0; x < 8; x++){
+            for (int y= 0; y < 8; y++){
+                int r = this->tileh->positions[i].tile.pixels[pix].color.r;
+                int g = this->tileh->positions[i].tile.pixels[pix].color.g;
+                int b = this->tileh->positions[i].tile.pixels[pix].color.b;
+                
+                glColor3i(r, g, b);
+                glVertex2i((i * 8) + x, (i * 8) + y);
+                pix++;
+            }
+        }
+    }
     
 #elif mainGraphics == GB_GRAPHICS
     
