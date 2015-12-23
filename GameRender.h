@@ -23,7 +23,7 @@ public:
     void cancel();
 };
 
-#endif
-
 #define GB_A glfwGetKey(this->wind, GLFW_KEY_Z)
 #define GB_B glfwGetKey(this->wind, GLFW_KEY_X)
+
+#endif
