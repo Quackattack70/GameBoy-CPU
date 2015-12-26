@@ -8,7 +8,7 @@ typedef enum {
 } GraphicsType;
 
 static GraphicsType mainGraphics;
-static bool running;
+static bool running = true;
 
 typedef enum {
     GB_WHITE = 0,
