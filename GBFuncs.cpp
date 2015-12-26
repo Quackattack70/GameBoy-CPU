@@ -149,11 +149,24 @@ void EmulateInstruct(GBState* state){
         case 0x7d: state->a = state->l; break; // LD A,L
         case 0x7e: state->a = state->memory[state->hl]; break; // LD A,(HL)
         
-        default: fprintf(stderr, "Unimplemented Instruction"); break;
+        default: fprintf(stderr, "Unimplemented Instruction\n"); break;
     }
     
     state->pc++;
     
     combineRegs(state);
     setFlagsInF(state);
+}
+
+void initMemory(GBState* state, char *filename){
+    running = true;
+    fstream ss(filename);
+    string save = "";
+    int memloc = 0;
+    while (getline(ss, save) && memloc < 0x7FFF){
+        for (int i = 0; i < save.size(); i++){
+            state->memory[memloc] = save[i];
+            memloc++;
+        }
+    }
 }

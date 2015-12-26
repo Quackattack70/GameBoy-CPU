@@ -1,6 +1,6 @@
 #include "GameRender.h"
 
-GameRender::GameRender(){
+GameRender::GameRender(char *filename){
     if (!glfwInit()){
         fprintf(stderr, "Error occured");
         exit(-1);
@@ -15,6 +15,8 @@ GameRender::GameRender(){
         glfwTerminate();
         exit(-1);
     }
+    
+    initMemory(&this->state, filename);
     
     this->tileh = new TileHandler();
     this->tileh->initTiles(&this->state);
@@ -37,6 +39,9 @@ void GameRender::IOHandle(){
     }
     if (GB_B == GLFW_PRESS){
         this->state.memory[0xff00] = (2) | joyp;
+    }
+    else {
+        this->state.memory[0xff00] = 0;
     }
 }
 
@@ -108,13 +113,12 @@ void GameRender::loop(){
     while(glfwWindowShouldClose(this->wind) == 0){
         this->update();
         EmulateInstruct(&this->state);
+        this->tileh->initTiles(&this->state);
         this->IOHandle();
-        this->state.memory[0xff00] = 0;
         
         glfwSwapBuffers(this->wind);
         glfwPollEvents();
     }
-    
     printf("Closing GB...\n");
     this->cancel();
 }

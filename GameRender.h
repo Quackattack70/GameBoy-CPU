@@ -14,7 +14,7 @@ public:
     GLFWwindow* wind;
     TileHandler* tileh;
     GBState state;
-    GameRender();
+    GameRender(char *filename);
     void init();
     void IOHandle();
     void start();
