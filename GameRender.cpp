@@ -65,6 +65,9 @@ void GameRender::start(){
                 
                 glColor3i(r, g, b);
                 glVertex2i((i * 8) + x, (i * 8) + y);
+                glVertex2i((i * 8) + x + 1, (i * 8) + y);
+                glVertex2i((i * 8) + x + 1, (i * 8) + y + 1);
+                glVertex2i((i * 8) + x, (i * 8) + y + 1);
                 pix++;
             }
         }
