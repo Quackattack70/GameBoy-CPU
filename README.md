@@ -1,2 +1,2 @@
 # GameBoy-CPU
-A crappy GameBoy CPU emulator
+A crappy Z80 CPU emulator
