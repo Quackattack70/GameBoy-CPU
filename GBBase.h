@@ -64,7 +64,7 @@ typedef struct {
     uint8_t h;
     uint8_t l;
     GBFlags flags;
-    uint8_t memory[0x7FFF]; // This is not a pointer for segfault reasons
+    uint8_t memory[0xFFFF]; // This is not a pointer for segfault reasons
     GBTile tiles[512]; /* about 360 are shown on the screen, the rest is 
     not drawn */
     GBSprite sprites[40];

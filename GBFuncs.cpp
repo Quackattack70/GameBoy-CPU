@@ -163,7 +163,7 @@ void initMemory(GBState* state, char *filename){
     fstream ss(filename);
     string save = "";
     int memloc = 0;
-    while (getline(ss, save) && memloc < 0x7FFF){
+    while (getline(ss, save) && memloc < 0xFFFF){
         for (int i = 0; i < save.size(); i++){
             state->memory[memloc] = save[i];
             memloc++;

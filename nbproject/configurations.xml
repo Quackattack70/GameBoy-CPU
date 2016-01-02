@@ -7,6 +7,7 @@
       <itemPath>GBBase.h</itemPath>
       <itemPath>GBFuncs.h</itemPath>
       <itemPath>GameRender.h</itemPath>
+      <itemPath>SpriteHandler.h</itemPath>
       <itemPath>TileHandler.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -59,6 +60,8 @@
       </item>
       <item path="GameRender.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="SpriteHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="TileHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="TileHandler.h" ex="false" tool="3" flavor2="0">
@@ -95,6 +98,8 @@
       <item path="GameRender.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="GameRender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpriteHandler.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="TileHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>

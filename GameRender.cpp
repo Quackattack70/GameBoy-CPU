@@ -34,6 +34,7 @@ void GameRender::init(){
 
 void GameRender::IOHandle(){
     uint8_t joyp = this->state.memory[0xff00];
+    
     if (GB_A == GLFW_PRESS){
         this->state.memory[0xff00] = (1) | joyp;
     }
