@@ -3,14 +3,9 @@
 
 #include "GBBase.h"
 
-typedef struct {
-    int x, y;
-    GBTile tile;
-} TilePos;
-
 class TileHandler {
 public:
-    TilePos positions[360];
+    GBTile positions[360];
     void initTiles(GBState*);
     TileHandler();
 };

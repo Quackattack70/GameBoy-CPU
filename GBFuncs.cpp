@@ -20,6 +20,13 @@ void setFlagsInF(GBState* state){
     state->f = state->f | (state->flags.h << 5) | (state->flags.c << 4);
 }
 
+void INC_rr(uint8_t* a1, uint8_t* a2){
+    uint16_t a = (a1 << 8) | a2 + 1;
+    a1[0] = (a & 0xF0) >> 8;
+    a2[0] = (a & 0x0F);
+}
+
+
 void EmulateInstruct(GBState* state){
     uint8_t* opcode = &state->memory[state->pc];
     
@@ -148,6 +155,16 @@ void EmulateInstruct(GBState* state){
         case 0x7c: state->a = state->h; break; // LD A,H
         case 0x7d: state->a = state->l; break; // LD A,L
         case 0x7e: state->a = state->memory[state->hl]; break; // LD A,(HL)
+        
+        case 0x04: state->b++; break; // INC B
+        case 0x14: state->d++; break; // INC D
+        case 0x24: state->h++; break; // INC H
+        case 0x34: state-memory[state->hl]++; break; // INC (HL)
+        case 0x33: state->sp++; break; // INC SP
+        case 0x03: INC_rr(&state->b, &state->c); break; // INC BC
+        case 0x13: INC_rr(&state->d, &state->e); break; // INC DE
+        case 0x23: INC_rr(&state->h, &state->l); break; // INC HL
+        
         
         default: fprintf(stderr, "Unimplemented Instruction\n"); break;
     }
