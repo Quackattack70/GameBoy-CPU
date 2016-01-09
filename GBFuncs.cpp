@@ -21,7 +21,7 @@ void setFlagsInF(GBState* state){
 }
 
 void INC_rr(uint8_t* a1, uint8_t* a2){
-    uint16_t a = (a1 << 8) | a2 + 1;
+    uint16_t a = (a1[0] << 8) | a2[0] + 1;
     a1[0] = (a & 0xF0) >> 8;
     a2[0] = (a & 0x0F);
 }
@@ -159,7 +159,7 @@ void EmulateInstruct(GBState* state){
         case 0x04: state->b++; break; // INC B
         case 0x14: state->d++; break; // INC D
         case 0x24: state->h++; break; // INC H
-        case 0x34: state-memory[state->hl]++; break; // INC (HL)
+        case 0x34: state->memory[state->hl]++; break; // INC (HL)
         case 0x33: state->sp++; break; // INC SP
         case 0x03: INC_rr(&state->b, &state->c); break; // INC BC
         case 0x13: INC_rr(&state->d, &state->e); break; // INC DE
