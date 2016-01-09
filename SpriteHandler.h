@@ -4,7 +4,9 @@
 #include "GBBase.h"
 
 class SpriteHandler {
+public:
     GBSprite* sprites[40];
+    SpriteHandler();
     void initSprites(GBState*);
 };
 
