@@ -10,6 +10,7 @@ using namespace std;
 void setColorCompatible(GBState*);
 void combineRegs(GBState*);
 void setFlagsInF(GBState*);
+void INC_rr(uint8_t*, uint8_t*);
 
 void EmulateInstruct(GBState*);
 void initMemory(GBState*, char*);
