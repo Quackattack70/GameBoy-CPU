@@ -1,6 +1,7 @@
 #ifndef SPRITEHANDLER_H
 #define SPRITEHANDLER_H
-#include "SpriteHandler.h"
+
+#include "GBBase.h"
 
 class SpriteHandler {
     GBSprite* sprites[40];
