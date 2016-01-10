@@ -156,10 +156,14 @@ void EmulateInstruct(GBState* state){
         case 0x7d: state->a = state->l; break; // LD A,L
         case 0x7e: state->a = state->memory[state->hl]; break; // LD A,(HL)
         
-        case 0x04: state->b++; break; // INC B
-        case 0x14: state->d++; break; // INC D
-        case 0x24: state->h++; break; // INC H
-        case 0x34: state->memory[state->hl]++; break; // INC (HL)
+        case 0x04: state->b++; state->flags.n = 0; break; // INC B
+        case 0x14: state->d++; state->flags.n = 0; break; // INC D
+        case 0x24: state->h++; state->flags.n = 0; break; // INC H
+        case 0x34: state->memory[state->hl]++; state->flags.n = 0; break; // INC (HL)
+        case 0x0C: state->c++; state->flags.n = 0; break; // INC C
+        case 0x1C: state->e++; state->flags.n = 0; break; // INC E
+        case 0x2C: state->l++; state->flags.n = 0; break; // INC L
+        case 0x3C: state->a++; state->flags.n = 0; break; // INC A
         case 0x33: state->sp++; break; // INC SP
         case 0x03: INC_rr(&state->b, &state->c); break; // INC BC
         case 0x13: INC_rr(&state->d, &state->e); break; // INC DE
