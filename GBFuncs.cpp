@@ -26,6 +26,12 @@ void INC_rr(uint8_t* a1, uint8_t* a2){
     a2[0] = (a & 0x0F);
 }
 
+void DEC_rr(uint8_t* a1, uint8_t* a2){
+    uint16_t a = (a1[0] << 8) | a2[0] - 1;
+    a1[0] = (a & 0xF0) >> 8;
+    a2[0] = (a & 0xF);
+}
+
 
 void EmulateInstruct(GBState* state){
     uint8_t* opcode = &state->memory[state->pc];
@@ -169,6 +175,10 @@ void EmulateInstruct(GBState* state){
         case 0x13: INC_rr(&state->d, &state->e); break; // INC DE
         case 0x23: INC_rr(&state->h, &state->l); break; // INC HL
         
+        case 0x0B: DEC_rr(&state->b, &state->c); break; // DEC BC
+        case 0x1B: DEC_rr(&state->d, &state->e); break; // DEC DE
+        case 0x2B: DEC_rr(&state->h, &state->l); break; // DEC HL
+        case 0x3B: state->sp--; break; // DEC SP
         
         default: fprintf(stderr, "Unimplemented Instruction\n"); break;
     }
