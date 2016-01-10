@@ -179,6 +179,10 @@ void EmulateInstruct(GBState* state){
         case 0x1B: DEC_rr(&state->d, &state->e); break; // DEC DE
         case 0x2B: DEC_rr(&state->h, &state->l); break; // DEC HL
         case 0x3B: state->sp--; break; // DEC SP
+        case 0x05: state->b--; state->flags.n = 1; break; // DEC B
+        case 0x15: state->d--; state->flags.n = 1; break; // DEC D
+        case 0x25: state->h--; state->flags.n = 1; break; // DEC H
+        case 0x35: state->memory[state->hl]--; state->flags.n = 1; break; // DEC (HL)
         
         default: fprintf(stderr, "Unimplemented Instruction\n"); break;
     }
