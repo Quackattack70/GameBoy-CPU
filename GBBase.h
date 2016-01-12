@@ -48,7 +48,6 @@ typedef struct {
 
 typedef struct {
     GBColor pixels[128];
-    bool isLarge;
     uint8_t x;
     uint8_t y;
     bool yflip;
