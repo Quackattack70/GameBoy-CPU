@@ -10,6 +10,17 @@ typedef enum {
 static GraphicsType mainGraphics;
 static bool running = true;
 
+namespace LCDCONT {
+    static uint8_t operation;
+    static uint8_t tileadd;
+    static uint8_t windowdis;
+    static uint8_t tilepadd;
+    static uint8_t backtileadd;
+    static uint8_t spritesize;
+    static uint8_t color0dis;
+    static uint8_t backdis;
+}
+
 typedef enum {
     GB_WHITE = 0,
     GB_LIGHTGRAY = 1,
