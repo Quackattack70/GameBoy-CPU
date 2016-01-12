@@ -7,6 +7,7 @@ class TileHandler {
 public:
     GBTile positions[360];
     void initTiles(GBState*);
+    void getTilesFromFile(GBState*);
     TileHandler();
 };
 

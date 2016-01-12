@@ -183,7 +183,7 @@ void EmulateInstruct(GBState* state){
         case 0x15: state->d--; state->flags.n = 1; break; // DEC D
         case 0x25: state->h--; state->flags.n = 1; break; // DEC H
         case 0x35: state->memory[state->hl]--; state->flags.n = 1; break; // DEC (HL)
-        case 0xC3: state->pc = (opcode[1] << 8) | opcode[2]; break; // JP b16
+        case 0xC3: state->pc = (opcode[2] << 8) | opcode[1]; break; // JP b16
         
         default: fprintf(stderr, "Unimplemented Instruction\n"); break;
     }
@@ -205,4 +205,16 @@ void initMemory(GBState* state, char *filename){
             memloc++;
         }
     }
+}
+
+void initLCDCONT(GBState* state){
+    uint8_t lcdcont = state->memory[0xFF40];
+    LCDCONT::operation = (lcdcont & 0b10000000) >> 7;
+    LCDCONT::tileadd = (lcdcont & 0b01000000) >> 6;
+    LCDCONT::windowdis = (lcdcont & 0b00100000) >> 5;
+    LCDCONT::tilepadd = (lcdcont & 0b00010000) >> 4;
+    LCDCONT::backtileadd = (lcdcont & 0b00001000) >> 3;
+    LCDCONT::spritesize = (lcdcont & 0b00000100) >> 2;
+    LCDCONT::color0dis = (lcdcont & 0b00000010) >> 1;
+    LCDCONT::backdis = (lcdcont & 0b00000001);
 }

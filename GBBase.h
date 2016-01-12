@@ -22,10 +22,10 @@ namespace LCDCONT {
 }
 
 typedef enum {
-    GB_WHITE = 0,
-    GB_LIGHTGRAY = 1,
-    GB_DARKGRAY = 2,
-    GB_BLACK = 3
+    GB_WHITE = 3,
+    GB_LIGHTGRAY = 2,
+    GB_DARKGRAY = 1,
+    GB_BLACK = 0
 } GBOldColor;
 
 typedef struct {
@@ -35,11 +35,8 @@ typedef struct {
 } GBNewColor;
 
 struct GBColor {
-#if mainGraphics == GBC_GRAPHICS
-    GBNewColor color;
-#elif mainGraphics == GB_GRAPHICS
-    GBOldColor color;
-#endif
+    GBNewColor newC;
+    GBOldColor oldC;
 };
 
 typedef struct {

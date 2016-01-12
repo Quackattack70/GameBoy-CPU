@@ -15,6 +15,7 @@ void DEC_rr(uint8_t*, uint8_t*);
 
 void EmulateInstruct(GBState*);
 void initMemory(GBState*, char*);
+void initLCDCONT(GBState*);
 
 #endif
 
