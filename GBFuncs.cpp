@@ -183,6 +183,7 @@ void EmulateInstruct(GBState* state){
         case 0x15: state->d--; state->flags.n = 1; break; // DEC D
         case 0x25: state->h--; state->flags.n = 1; break; // DEC H
         case 0x35: state->memory[state->hl]--; state->flags.n = 1; break; // DEC (HL)
+        case 0xC3: state->pc = (opcode[1] << 8) | opcode[2]; break; // JP b16
         
         default: fprintf(stderr, "Unimplemented Instruction\n"); break;
     }
