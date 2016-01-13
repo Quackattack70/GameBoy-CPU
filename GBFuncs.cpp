@@ -100,7 +100,7 @@ void EmulateInstruct(GBState* state){
             break;
             
         case 0x31: // LD SP,b16
-            state->sp = (opcode[1] << 8) | opcode[2];
+            state->sp = (opcode[2] << 8) | opcode[1];
             state->pc += 2;
             break;
         
@@ -184,6 +184,20 @@ void EmulateInstruct(GBState* state){
         case 0x25: state->h--; state->flags.n = 1; break; // DEC H
         case 0x35: state->memory[state->hl]--; state->flags.n = 1; break; // DEC (HL)
         case 0xC3: state->pc = (opcode[2] << 8) | opcode[1]; break; // JP b16
+        case 0x76: running = 0; break; // HALT
+        case 0xCD: // CALL b12
+        {
+            uint16_t ret = state->sp + 2;
+            state->memory[state->sp-1] = (ret >> 8) & 0xff;
+            state->memory[state->sp-2] = (ret & 0xff);
+            state->sp -= 2;
+            state->pc = (opcode[2] >> 8) | opcode[1];
+            break;
+        }
+        case 0xC9:
+            state->pc = state->memory[state->sp] | (state->memory[state->sp+1] << 8);
+            state->sp += 2;
+            break;
         
         default: fprintf(stderr, "Unimplemented Instruction\n"); break;
     }
