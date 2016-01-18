@@ -26,18 +26,35 @@ void TileHandler::getTilesFromFile(GBState* state){
 
         int currentT = 0;
         int currentP = 0;
+        uint8_t tilepal[4] = {0, 0, 0, 0};
         for (tileadd; tileadd < tileend; tileadd += 16){
             for (int i = 0; i < 16; i++){
-                uint8_t bitp1 = (state->memory[tileadd+i] & 0b11000000) >> 6;
-                uint8_t bitp2 = (state->memory[tileadd+i] & 0b00110000) >> 4;
-                uint8_t bitp3 = (state->memory[tileadd+i] & 0b00001100) >> 2;
-                uint8_t bitp4 = (state->memory[tileadd+i] & 0b00000011);
-
-                state->tiles[currentT].pixels[currentP].oldC = (GBOldColor)bitp1;
-                state->tiles[currentT].pixels[currentP+1].oldC = (GBOldColor)bitp2;
-                state->tiles[currentT].pixels[currentP+2].oldC = (GBOldColor)bitp3;
-                state->tiles[currentT].pixels[currentP+3].oldC = (GBOldColor)bitp4;
-
+                tilepal[0] = (state->memory[tileadd+i] & 0b11000000) >> 6;
+                tilepal[1] = (state->memory[tileadd+i] & 0b00110000) >> 4;
+                tilepal[2] = (state->memory[tileadd+i] & 0b00001100) >> 2;
+                tilepal[3] = (state->memory[tileadd+i] & 0b00000011);
+                
+                for (int t = 0; t < 4; t++){
+                    switch(tilepal[t]){
+                        case 0x00:
+                           state->tiles[currentT].pixels[currentP+t].oldC =
+                                   GB_BLACK;
+                           break;
+                        case 0x01:
+                            state->tiles[currentT].pixels[currentP+t].oldC =
+                                    GB_DARKGRAY;
+                            break;
+                        case 0x02:
+                            state->tiles[currentT].pixels[currentP+t].oldC =
+                                    GB_LIGHTGRAY;
+                            break;
+                        case 0x03:
+                            state->tiles[currentT].pixels[currentP+t].oldC =
+                                    GB_WHITE;
+                            break;
+                    }
+                }
+                
                 currentP += 4;
             }
             currentT++;
