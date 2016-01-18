@@ -5,7 +5,9 @@
 #include "TileHandler.h"
 #include "GBBase.h"
 #include "GBFuncs.h"
+#include "cpuclock.h"
 #include <stdlib.h>
+#include <pthread.h>
 #include <GLFW/glfw3.h>
 #include <GL/gl.h>
 

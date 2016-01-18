@@ -9,6 +9,7 @@
       <itemPath>GameRender.h</itemPath>
       <itemPath>SpriteHandler.h</itemPath>
       <itemPath>TileHandler.h</itemPath>
+      <itemPath>cpuclock.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -20,6 +21,7 @@
       <itemPath>GBFuncs.cpp</itemPath>
       <itemPath>GameRender.cpp</itemPath>
       <itemPath>TileHandler.cpp</itemPath>
+      <itemPath>cpuclock.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -66,6 +68,10 @@
       </item>
       <item path="TileHandler.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="cpuclock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="cpuclock.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -104,6 +110,10 @@
       <item path="TileHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="TileHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpuclock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="cpuclock.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

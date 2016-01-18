@@ -2,6 +2,6 @@
 
 int main(int argc, char** argv) {
     GameRender* render = new GameRender(argv[1]);
-    render->loop();
+    PrintLCDCONT();
     return 0;
 }

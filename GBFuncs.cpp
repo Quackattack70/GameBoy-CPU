@@ -9,6 +9,11 @@ void setColorCompatible(GBState* state){
     }
 }
 
+void PrintLCDCONT(){
+    printf("Tile Location(0x9C00): %02x\n", LCDCONT::tileadd);
+    printf("Sprite Size(128 pix): %02x\n", LCDCONT::spritesize);
+}
+
 void combineRegs(GBState* state){
     state->bc = (state->b << 8) | state->c;
     state->af = (state->a << 8) | state->f;

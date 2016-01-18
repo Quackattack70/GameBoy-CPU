@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/GBFuncs.o \
 	${OBJECTDIR}/GameRender.o \
 	${OBJECTDIR}/TileHandler.o \
+	${OBJECTDIR}/cpuclock.o \
 	${OBJECTDIR}/main.o
 
 
@@ -79,6 +80,11 @@ ${OBJECTDIR}/TileHandler.o: TileHandler.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TileHandler.o TileHandler.cpp
+
+${OBJECTDIR}/cpuclock.o: cpuclock.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/cpuclock.o cpuclock.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

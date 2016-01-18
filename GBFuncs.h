@@ -12,6 +12,7 @@ void combineRegs(GBState*);
 void setFlagsInF(GBState*);
 void INC_rr(uint8_t*, uint8_t*);
 void DEC_rr(uint8_t*, uint8_t*);
+void PrintLCDCONT();
 
 void EmulateInstruct(GBState*);
 void initMemory(GBState*, char*);

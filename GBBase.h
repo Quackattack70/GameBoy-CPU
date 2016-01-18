@@ -7,7 +7,7 @@ typedef enum {
     GB_GRAPHICS, GBC_GRAPHICS
 } GraphicsType;
 
-static GraphicsType mainGraphics;
+static GraphicsType mainGraphics = GB_GRAPHICS;
 static bool running = true;
 
 namespace LCDCONT {

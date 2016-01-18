@@ -1,6 +1,14 @@
 #include "GameRender.h"
 
 GameRender::GameRender(char *filename){
+    initMemory(&this->state, filename);
+    initLCDCONT(&this->state);
+    setColorCompatible(&this->state);
+    
+    this->tileh = new TileHandler();
+    this->tileh->getTilesFromFile(&this->state);
+    this->tileh->initTiles(&this->state);
+    
     if (!glfwInit()){
         fprintf(stderr, "Error occured");
         exit(-1);
@@ -14,15 +22,7 @@ GameRender::GameRender(char *filename){
         fprintf(stderr, "Error occured");
         glfwTerminate();
         exit(-1);
-    }
-    
-    initMemory(&this->state, filename);
-    initLCDCONT(&this->state);
-    setColorCompatible(&this->state);
-    
-    this->tileh = new TileHandler();
-    this->tileh->getTilesFromFile(&this->state);
-    this->tileh->initTiles(&this->state);
+    }   
 }
 
 void GameRender::init(){
@@ -55,56 +55,33 @@ void GameRender::cancel(){
 }
 
 void GameRender::start(){
-    setColorCompatible(&this->state);
-    glBegin(GL_POINT);
+    glBegin(GL_POLYGON);
     
-    if (mainGraphics == GBC_GRAPHICS){
-        for (int i =0; i < 360; i++){
-            int pix = 0;
-            for (int x= 0; x < 8; x++){
-                for (int y= 0; y < 8; y++){
-                    int r = this->tileh->positions[i].pixels[pix].newC.r;
-                    int g = this->tileh->positions[i].pixels[pix].newC.g;
-                    int b = this->tileh->positions[i].pixels[pix].newC.b;
+    for (int i = 0; i < 360; i++){
+        int pix = 0;
+        for (int x=0; x < 8; x++){
+            for (int y=0; y < 8; y++){
+                uint8_t co = this->tileh->positions[i].pixels[pix].oldC;
 
-                    glColor3i(r, g, b);
-                    glVertex2i((i * 8) + x, (i * 8) + y);
-                    glVertex2i((i * 8) + x + 1, (i * 8) + y);
-                    glVertex2i((i * 8) + x + 1, (i * 8) + y + 1);
-                    glVertex2i((i * 8) + x, (i * 8) + y + 1);
-                    pix++;
+                switch(co){
+                    case GB_BLACK:
+                        glColor3i(0, 0, 0);
+                        break;
+                    case GB_WHITE:
+                        glColor3i(255, 255, 255);
+                        break;
+                    case GB_LIGHTGRAY:
+                        glColor3i(211, 211, 211);
+                        break;
+                    case GB_DARKGRAY:
+                        glColor3i(105, 105, 105);
+                        break;
                 }
-            }
-        }
-    }
-    
-    else if (mainGraphics == GB_GRAPHICS){
-        for (int i = 0; i < 360; i++){
-            int pix = 0;
-            for (int x=0; x < 8; x++){
-                for (int y=0; y < 8; y++){
-                    uint8_t co = this->tileh->positions[i].pixels[pix].oldC;
-
-                    switch(co){
-                        case GB_BLACK:
-                            glColor3i(0, 0, 0);
-                            break;
-                        case GB_WHITE:
-                            glColor3i(255, 255, 255);
-                            break;
-                        case GB_LIGHTGRAY:
-                            glColor3i(211, 211, 211);
-                            break;
-                        case GB_DARKGRAY:
-                            glColor3i(105, 105, 105);
-                            break;
-                    }
-                    glVertex2i((i * 8) + x, (i * 8) + y);
-                    glVertex2i((i * 8) + x + 1, (i * 8) + y);
-                    glVertex2i((i * 8) + x + 1, (i * 8) + y + 1);
-                    glVertex2i((i * 8) + x, (i * 8) + y + 1);
-                    pix++;
-                }
+                glVertex2i((i * 8) + x, (i * 8) + y);
+                glVertex2i((i * 8) + x + 1, (i * 8) + y);
+                glVertex2i((i * 8) + x + 1, (i * 8) + y + 1);
+                glVertex2i((i * 8) + x, (i * 8) + y + 1);
+                pix++;
             }
         }
     }
@@ -114,59 +91,47 @@ void GameRender::start(){
 
 void GameRender::update(){
     glClear(GL_COLOR_BUFFER_BIT);
-    glBegin(GL_POINT);
+    glBegin(GL_POLYGON);
     
-    if (mainGraphics == GBC_GRAPHICS){
-        for (int i =0; i < 360; i++){
-            int pix = 0;
-            for (int x= 0; x < 8; x++){
-                for (int y= 0; y < 8; y++){
-                    int r = this->tileh->positions[i].pixels[pix].newC.r;
-                    int g = this->tileh->positions[i].pixels[pix].newC.g;
-                    int b = this->tileh->positions[i].pixels[pix].newC.b;
+   
+    for (int i = 0; i < 360; i++){
+        int pix = 0;
+        int mainx = 0;
+        int mainy = 0;
+        for (int x=0; x < 8; x++){
+            for (int y=0; y < 8; y++){
+                uint8_t co = this->tileh->positions[i].pixels[pix].oldC;
 
-                    glColor3i(r, g, b);
-                    glVertex2i((i * 8) + x, (i * 8) + y);
-                    glVertex2i((i * 8) + x + 1, (i * 8) + y);
-                    glVertex2i((i * 8) + x + 1, (i * 8) + y + 1);
-                    glVertex2i((i * 8) + x, (i * 8) + y + 1);
-                    pix++;
+                switch(co){
+                    case GB_BLACK:
+                        glColor3i(0, 0, 0);
+                        break;
+                    case GB_WHITE:
+                        glColor3i(255, 255, 255);
+                        break;
+                    case GB_LIGHTGRAY:
+                        glColor3i(211, 211, 211);
+                        break;
+                    case GB_DARKGRAY:
+                        glColor3i(105, 105, 105);
+                        break;
                 }
+                glVertex2i((mainx * 8) + x, (mainy * 8) + y);
+                glVertex2i((mainx * 8) + x + 1, (mainy * 8) + y);
+                glVertex2i((mainx * 8) + x + 1, (mainy * 8) + y + 1);
+                glVertex2i((mainx * 8) + x, (mainy * 8) + y + 1);
+                pix++;
+                mainy++;
             }
+            mainy = 0;
+            mainx++;
         }
     }
-    
-    else if (mainGraphics == GB_GRAPHICS){
-        for (int i = 0; i < 360; i++){
-            int pix = 0;
-            for (int x=0; x < 8; x++){
-                for (int y=0; y < 8; y++){
-                    uint8_t co = this->tileh->positions[i].pixels[pix].oldC;
-
-                    switch(co){
-                        case GB_BLACK:
-                            glColor3i(0, 0, 0);
-                            break;
-                        case GB_WHITE:
-                            glColor3i(255, 255, 255);
-                            break;
-                        case GB_LIGHTGRAY:
-                            glColor3i(211, 211, 211);
-                            break;
-                        case GB_DARKGRAY:
-                            glColor3i(105, 105, 105);
-                            break;
-                    }
-                    glVertex2i((i * 8) + x, (i * 8) + y);
-                    glVertex2i((i * 8) + x + 1, (i * 8) + y);
-                    glVertex2i((i * 8) + x + 1, (i * 8) + y + 1);
-                    glVertex2i((i * 8) + x, (i * 8) + y + 1);
-                    pix++;
-                }
-            }
-        }
-    }
-
+    EmulateInstruct(&this->state);
+    this->tileh->getTilesFromFile(&this->state);
+    this->tileh->initTiles(&this->state);
+    this->IOHandle();
+        
     glEnd();
 }
 
@@ -180,10 +145,6 @@ void GameRender::loop(){
     
     while(glfwWindowShouldClose(this->wind) == 0){
         this->update();
-        EmulateInstruct(&this->state);
-        this->tileh->getTilesFromFile(&this->state);
-        this->tileh->initTiles(&this->state);
-        this->IOHandle();
         
         glfwSwapBuffers(this->wind);
         glfwPollEvents();
