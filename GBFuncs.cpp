@@ -9,11 +9,6 @@ void setColorCompatible(GBState* state){
     }
 }
 
-void PrintLCDCONT(){
-    printf("Tile Location(0x9C00): %02x\n", LCDCONT::tileadd);
-    printf("Sprite Size(128 pix): %02x\n", LCDCONT::spritesize);
-}
-
 void combineRegs(GBState* state){
     state->bc = (state->b << 8) | state->c;
     state->af = (state->a << 8) | state->f;
@@ -199,10 +194,94 @@ void EmulateInstruct(GBState* state){
             state->pc = (opcode[2] >> 8) | opcode[1];
             break;
         }
-        case 0xC9:
+        case 0xC9: // RET
             state->pc = state->memory[state->sp] | (state->memory[state->sp+1] << 8);
             state->sp += 2;
             break;
+            
+        case 0x80: // ADD A,B
+            state->a += state->b; 
+            state->flags.n = 0; 
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.c = 1;
+                state->flags.h = 1;
+            }
+            break;
+            
+        case 0x81: // ADD A,C
+            state->a += state->c;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x82:
+            state->a += state->d;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x83:
+            state->a += state->e;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x84:
+            state->a += state->h;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x85:
+            state->a += state->l;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x86:
+            state->a += state->memory[state->hl];
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x87:
+            state->a += state->a;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x88:
+            state->a += state->b + state->c;
+            
         
         default: fprintf(stderr, "Unimplemented Instruction\n"); break;
     }
