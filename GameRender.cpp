@@ -51,7 +51,6 @@ void GameRender::IOHandle(){
 
 void GameRender::cancel(){
     glfwDestroyWindow(this->wind);
-    exit(0);
 }
 
 void GameRender::start(){
@@ -150,10 +149,5 @@ void GameRender::loop(){
         glfwPollEvents();
     }
     printf("Closing GB...\n");
-    printf("A: %02x, F: %02x\n", this->state.a, this->state.f);
-    printf("B: %02x, C: %02x\n", this->state.b, this->state.c);
-    printf("H: %02x, L: %02x\n", this->state.h, this->state.l);
-    printf("PC: %04x, SP: %04x\n", this->state.pc, this->state.sp);
-    printf("Graphics: %02x\n", (uint16_t)mainGraphics);
     this->cancel();
 }
