@@ -82,20 +82,20 @@ void EmulateInstruct(GBState* state){
             
         // 16 bit loads yaaaaaay!!!! :)
         case 0x01: // LD BC,b16
-            state->b = opcode[1];
-            state->c = opcode[2];
+            state->b = opcode[2];
+            state->c = opcode[1];
             state->pc += 2;
             break;
             
         case 0x11: // LD DE,b16
-            state->d = opcode[1];
-            state->e = opcode[2];
+            state->d = opcode[2];
+            state->e = opcode[1];
             state->pc += 2;
             break;
             
         case 0x21: // LD HL,b16
-            state->h = opcode[1];
-            state->l = opcode[2];
+            state->h = opcode[2];
+            state->l = opcode[1];
             state->pc += 2;
             break;
             
@@ -219,7 +219,7 @@ void EmulateInstruct(GBState* state){
             }
             break;
             
-        case 0x82:
+        case 0x82: // ADD A,D
             state->a += state->d;
             state->flags.n = 0;
             if (state->a != 0){
@@ -229,7 +229,7 @@ void EmulateInstruct(GBState* state){
             }
             break;
             
-        case 0x83:
+        case 0x83: // ADD A,E
             state->a += state->e;
             state->flags.n = 0;
             if (state->a != 0){
@@ -239,7 +239,7 @@ void EmulateInstruct(GBState* state){
             }
             break;
             
-        case 0x84:
+        case 0x84: // ADD A,H
             state->a += state->h;
             state->flags.n = 0;
             if (state->a != 0){
@@ -249,7 +249,7 @@ void EmulateInstruct(GBState* state){
             }
             break;
             
-        case 0x85:
+        case 0x85: // ADD A,L
             state->a += state->l;
             state->flags.n = 0;
             if (state->a != 0){
@@ -259,7 +259,7 @@ void EmulateInstruct(GBState* state){
             }
             break;
             
-        case 0x86:
+        case 0x86: // ADD A,(HL)
             state->a += state->memory[state->hl];
             state->flags.n = 0;
             if (state->a != 0){
@@ -269,7 +269,7 @@ void EmulateInstruct(GBState* state){
             }
             break;
             
-        case 0x87:
+        case 0x87: // ADD A,A
             state->a += state->a;
             state->flags.n = 0;
             if (state->a != 0){
@@ -279,10 +279,106 @@ void EmulateInstruct(GBState* state){
             }
             break;
             
-        case 0x88:
-            state->a += state->b + state->c;
+        case 0x88: // ADC A,B
+            state->a += state->b + state->flags.c;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
             
-        
+        case 0x89: // ADC A,C
+            state->a += state->c + state->flags.c;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x8a: // ADC A,D
+            state->a += state->d + state->flags.c;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x8b: // ADC A,E
+            state->a += state->e + state->flags.c;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x8c: // ADC A,H
+            state->a += state->h + state->flags.c;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x8d: // ADC A,L
+            state->a += state->l + state->flags.c;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x8e: // ADC A,(HL)
+            state->a += state->memory[state->hl] + state->flags.n;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x8f: // ADC A,A
+            state->a += state->a + state->flags.n;
+            state->flags.n = 0;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x90: // SUB B
+            state->a -= state->b;
+            state->flags.n = 1;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
+        case 0x91: // SUB C
+            state->a -= state->c;
+            state->flags.n = 1;
+            if (state->a != 0){
+                state->flags.z = 1;
+                state->flags.h = 1;
+                state->flags.c = 1;
+            }
+            break;
+            
         default: fprintf(stderr, "Unimplemented Instruction\n"); break;
     }
     

@@ -16,12 +16,12 @@ void TileHandler::getTilesFromFile(GBState* state){
         uint16_t tileadd;
         uint16_t tileend;
 
-        if (LCDCONT::tileadd == 1){
-            tileadd = 0x9C00;
-            tileend = 0x9FFF;
+        if (LCDCONT::tilepadd == 1){
+            tileadd = 0x8000;
+            tileend = 0x8FFF;
         } else {
-            tileadd = 0x9800;
-            tileend = 0x9BFF;
+            tileadd = 0x8800;
+            tileend = 0x97FF;
         }
 
         int currentT = 0;
